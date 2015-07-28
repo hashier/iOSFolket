@@ -1,0 +1,33 @@
+# Some stuff taken from:
+# https://gist.github.com/adamgit/3786883/raw/0214e1daa796d483a73f7092a9e8f67c45067951/.gitignore
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+Icon?
+Thumbs.db
+
+# Logs and databases #
+######################
+*.log
+
+# Xcode
+#######
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+# User Informations
+# Shared profiles are being kept
+xcuserdata
+
+*.xcworkspace/
