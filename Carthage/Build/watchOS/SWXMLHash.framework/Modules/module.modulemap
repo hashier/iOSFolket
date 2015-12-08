@@ -1,0 +1,6 @@
+framework module SWXMLHash {
+  umbrella header "SWXMLHash.h"
+
+  export *
+  module * { export * }
+}
