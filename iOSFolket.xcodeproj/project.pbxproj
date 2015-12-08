@@ -12,6 +12,9 @@
 		CE1BDC401C172AB7008773B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1BDC3E1C172AB7008773B9 /* Main.storyboard */; };
 		CE1BDC421C172AB7008773B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1BDC411C172AB7008773B9 /* Assets.xcassets */; };
 		CE1BDC451C172AB7008773B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1BDC431C172AB7008773B9 /* LaunchScreen.storyboard */; };
+		CE1BDC4F1C172BD1008773B9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1BDC4C1C172BD1008773B9 /* Realm.framework */; };
+		CE1BDC501C172BD1008773B9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1BDC4D1C172BD1008773B9 /* RealmSwift.framework */; };
+		CE1BDC511C172BD1008773B9 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1BDC4E1C172BD1008773B9 /* SWXMLHash.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		CE1BDC411C172AB7008773B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE1BDC441C172AB7008773B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE1BDC461C172AB7008773B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE1BDC4C1C172BD1008773B9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		CE1BDC4D1C172BD1008773B9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		CE1BDC4E1C172BD1008773B9 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1BDC4F1C172BD1008773B9 /* Realm.framework in Frameworks */,
+				CE1BDC501C172BD1008773B9 /* RealmSwift.framework in Frameworks */,
+				CE1BDC511C172BD1008773B9 /* SWXMLHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +49,7 @@
 			children = (
 				CE1BDC391C172AB7008773B9 /* iOSFolket */,
 				CE1BDC381C172AB7008773B9 /* Products */,
+				CE1BDC521C172BE6008773B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +74,16 @@
 			path = iOSFolket;
 			sourceTree = "<group>";
 		};
+		CE1BDC521C172BE6008773B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE1BDC4C1C172BD1008773B9 /* Realm.framework */,
+				CE1BDC4D1C172BD1008773B9 /* RealmSwift.framework */,
+				CE1BDC4E1C172BD1008773B9 /* SWXMLHash.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +94,7 @@
 				CE1BDC331C172AB7008773B9 /* Sources */,
 				CE1BDC341C172AB7008773B9 /* Frameworks */,
 				CE1BDC351C172AB7008773B9 /* Resources */,
+				CE1BDC531C172C34008773B9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -129,6 +150,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CE1BDC531C172C34008773B9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SWXMLHash.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE1BDC331C172AB7008773B9 /* Sources */ = {
@@ -247,6 +287,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOSFolket/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.iOSFolket;
@@ -258,6 +302,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = iOSFolket/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.iOSFolket;
@@ -284,6 +332,7 @@
 				CE1BDC4B1C172AB7008773B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
