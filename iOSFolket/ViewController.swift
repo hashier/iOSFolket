@@ -78,14 +78,8 @@ class ViewController: UIViewController {
         "</word>"
         
         func parseDictionary(dictionary: XMLIndexer) -> [Word] {
-            var words = [Word]()
             
-            for childWord in dictionary["word"].all {
-                let word = parseWord(childWord)
-                words.append(word)
-            }
-            
-            return words
+            return dictionary["word"].map(parseWord)
         }
         
         func parseWord(childWord: XMLIndexer) -> Word {
