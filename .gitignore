@@ -31,3 +31,10 @@ Thumbs.db
 xcuserdata
 
 *.xcworkspace/
+
+iOSFolket/data/folkets_en_sv_public.xml
+iOSFolket/data/folkets_sv_en_public.xml
+iOSFolket/data/start.xml
+iOSFolket/data/end.xml
+iOSFolket/data/all.xml
+

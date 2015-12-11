@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C2D5B6E1C1ACBE600154349 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D5B6D1C1ACBE600154349 /* Translation.swift */; };
 		1CC4E31C1C19C67C00950BC5 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC4E31B1C19C67C00950BC5 /* Word.swift */; };
+		CE0C412A1C1B5AD7006818B8 /* small.xml in Resources */ = {isa = PBXBuildFile; fileRef = CE0C41291C1B5AD7006818B8 /* small.xml */; };
 		CE1BDC3B1C172AB7008773B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1BDC3A1C172AB7008773B9 /* AppDelegate.swift */; };
 		CE1BDC3D1C172AB7008773B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1BDC3C1C172AB7008773B9 /* ViewController.swift */; };
 		CE1BDC401C172AB7008773B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1BDC3E1C172AB7008773B9 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		1C2D5B6D1C1ACBE600154349 /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Translation.swift; path = Model/Translation.swift; sourceTree = "<group>"; };
 		1CC4E31B1C19C67C00950BC5 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Word.swift; path = Model/Word.swift; sourceTree = "<group>"; };
+		CE0C41291C1B5AD7006818B8 /* small.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = small.xml; path = data/small.xml; sourceTree = "<group>"; };
 		CE1BDC371C172AB7008773B9 /* iOSFolket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSFolket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1BDC3A1C172AB7008773B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE1BDC3C1C172AB7008773B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		CE0C41281C1B5AC9006818B8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CE0C41291C1B5AD7006818B8 /* small.xml */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		CE1BDC2E1C172AB7008773B9 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 		CE1BDC391C172AB7008773B9 /* iOSFolket */ = {
 			isa = PBXGroup;
 			children = (
+				CE0C41281C1B5AC9006818B8 /* Data */,
 				1CC4E31D1C19C68200950BC5 /* Model */,
 				CE1BDC3A1C172AB7008773B9 /* AppDelegate.swift */,
 				CE1BDC3C1C172AB7008773B9 /* ViewController.swift */,
@@ -158,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1BDC451C172AB7008773B9 /* LaunchScreen.storyboard in Resources */,
+				CE0C412A1C1B5AD7006818B8 /* small.xml in Resources */,
 				CE1BDC421C172AB7008773B9 /* Assets.xcassets in Resources */,
 				CE1BDC401C172AB7008773B9 /* Main.storyboard in Resources */,
 			);
