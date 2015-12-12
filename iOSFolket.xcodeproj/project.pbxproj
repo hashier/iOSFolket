@@ -21,9 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C2D5B6D1C1ACBE600154349 /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Translation.swift; path = Model/Translation.swift; sourceTree = "<group>"; };
-		1CC4E31B1C19C67C00950BC5 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Word.swift; path = Model/Word.swift; sourceTree = "<group>"; };
-		CE0C41291C1B5AD7006818B8 /* small.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = small.xml; path = data/small.xml; sourceTree = "<group>"; };
+		1C2D5B6D1C1ACBE600154349 /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		1CC4E31B1C19C67C00950BC5 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		CE0C41291C1B5AD7006818B8 /* small.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = small.xml; sourceTree = "<group>"; };
 		CE1BDC371C172AB7008773B9 /* iOSFolket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSFolket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1BDC3A1C172AB7008773B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE1BDC3C1C172AB7008773B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 				1CC4E31B1C19C67C00950BC5 /* Word.swift */,
 				1C2D5B6D1C1ACBE600154349 /* Translation.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CE0C41281C1B5AC9006818B8 /* Data */ = {
@@ -65,6 +65,7 @@
 				CE0C41291C1B5AD7006818B8 /* small.xml */,
 			);
 			name = Data;
+			path = data;
 			sourceTree = "<group>";
 		};
 		CE1BDC2E1C172AB7008773B9 = {
