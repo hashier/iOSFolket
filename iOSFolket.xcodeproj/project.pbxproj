@@ -18,6 +18,7 @@
 		CE1BDC4F1C172BD1008773B9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1BDC4C1C172BD1008773B9 /* Realm.framework */; };
 		CE1BDC501C172BD1008773B9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1BDC4D1C172BD1008773B9 /* RealmSwift.framework */; };
 		CE1BDC511C172BD1008773B9 /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1BDC4E1C172BD1008773B9 /* SWXMLHash.framework */; };
+		CE769EB61C1C1A4B00E22A04 /* FolketXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE769EB51C1C1A4B00E22A04 /* FolketXMLParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CE1BDC4C1C172BD1008773B9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		CE1BDC4D1C172BD1008773B9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		CE1BDC4E1C172BD1008773B9 /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = Carthage/Build/iOS/SWXMLHash.framework; sourceTree = "<group>"; };
+		CE769EB51C1C1A4B00E22A04 /* FolketXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolketXMLParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		CE1BDC391C172AB7008773B9 /* iOSFolket */ = {
 			isa = PBXGroup;
 			children = (
+				CE769EB41C1C181200E22A04 /* Controller */,
 				CE0C41281C1B5AC9006818B8 /* Data */,
 				1CC4E31D1C19C68200950BC5 /* Model */,
 				CE1BDC3A1C172AB7008773B9 /* AppDelegate.swift */,
@@ -108,6 +111,15 @@
 				CE1BDC4E1C172BD1008773B9 /* SWXMLHash.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE769EB41C1C181200E22A04 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE769EB51C1C1A4B00E22A04 /* FolketXMLParser.swift */,
+			);
+			name = Controller;
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1BDC3D1C172AB7008773B9 /* ViewController.swift in Sources */,
+				CE769EB61C1C1A4B00E22A04 /* FolketXMLParser.swift in Sources */,
 				CE1BDC3B1C172AB7008773B9 /* AppDelegate.swift in Sources */,
 				1CC4E31C1C19C67C00950BC5 /* Word.swift in Sources */,
 				1C2D5B6E1C1ACBE600154349 /* Translation.swift in Sources */,

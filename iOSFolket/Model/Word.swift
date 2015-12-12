@@ -14,6 +14,4 @@ class Word: Object {
     dynamic var wordClass = ""
     dynamic var value = ""
     var translations = List<Translation>()
-    
-    
 }
