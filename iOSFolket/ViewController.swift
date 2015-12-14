@@ -26,7 +26,12 @@ class ViewController: UIViewController {
         let file = NSBundle.mainBundle().pathForResource("small", ofType: "xml")
         if let file = file {
             let fxmlp = FolketXMLParser(withFilePath: file)
-            fxmlp.parse()
+            if let dictionary = fxmlp.parse() {
+                print(dictionary) // comment that out after parrsing is done
+                // TODO: save this dictionary to disk
+            } else {
+                // TODO: parsing errors
+            }
         }
         
     }
