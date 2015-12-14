@@ -9,9 +9,22 @@
 import Foundation
 import RealmSwift
 
-class Word: Object {
-    dynamic var language = ""
-    dynamic var wordClass = ""
-    dynamic var value = ""
-    var translations = List<Translation>()
+class Word: LanguageUnit {
+    dynamic var wordClass: String?
+    
+    dynamic var phonetic: LanguageUnit?
+    dynamic var grammar: LanguageUnit?
+    
+    dynamic var definition: Translation?
+    dynamic var explanation: Translation?
+    
+    var translations = List<LanguageUnit>()
+    var inflections = List<LanguageUnit>()
+    var synonyms = List<LanguageUnit>()
+    
+    var antonyms = List<Translation>()
+    var examples = List<Translation>()
+    var compounds = List<Translation>()
+    var derivations = List<Translation>()
+    var idioms = List<Translation>()
 }

@@ -20,11 +20,18 @@ class FolketXMLParser {
         
         var xmlStr = try! String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding)
         
-        func parseDictionary(dictionary: XMLIndexer) -> [Word] {
-            return dictionary["word"].map(parseWord)
+        func parseDictionary(dictionary: XMLIndexer) {
+            
+            let targetLanguage = dictionary.element?.attributes["target-language"]
+            
+            for childWord in dictionary["word"].all {
+                let word = parseWord(childWord, targetLanguage: targetLanguage!)
+                print(word)
+            }
         }
         
-        func parseWord(childWord: XMLIndexer) -> Word {
+        func parseWord(childWord: XMLIndexer, targetLanguage: String) -> Word {
+            
             let value = childWord.element?.attributes["value"]
             let language = childWord.element?.attributes["lang"]
             let wordClass = childWord.element?.attributes["class"]
@@ -32,31 +39,88 @@ class FolketXMLParser {
             
             word.value = value!
             word.language = language!
-            if let wordClass = wordClass {
-                word.wordClass = wordClass
-            }
             
-            for childTranslation in childWord["translation"].all {
-                let translation = parseTranslation(childTranslation, original: word.value)
-                word.translations.append(translation)
+            word.wordClass = wordClass
+            
+            for wordChild in childWord.children {
+                switch wordChild.element!.name {
+                case "phonetic":
+                    word.phonetic = parseLanguageUnit(childWord["phonetic"], language: word.language)
+                case "definition":
+                    word.definition = parseTranslation(childWord["definition"], language: word.language, targetLanguage: targetLanguage)
+                case "translation":
+                    let languageUnit = parseLanguageUnit(wordChild, language: targetLanguage)
+                    word.translations.append(languageUnit)
+                case "synonym":
+                    let synonym = parseLanguageUnit(wordChild, language: word.language)
+                    word.synonyms.append(synonym)
+                case "paradigm":
+                    for paradigms in childWord["paradigm"].all {
+                        let languageUnit = parseLanguageUnit(paradigms, language: word.language)
+                        word.inflections.append(languageUnit)
+                    }
+                case "example":
+                    let translation = parseTranslation(wordChild, language: word.language, targetLanguage: targetLanguage)
+                    word.examples.append(translation)
+                case "compound":
+                    let translation = parseTranslation(wordChild, language: word.language, targetLanguage: targetLanguage)
+                    word.compounds.append(translation)
+                case "idiom":
+                    let translation = parseTranslation(wordChild, language: word.language, targetLanguage: targetLanguage)
+                    word.idioms.append(translation)
+                case "derivation":
+                    let translation = parseTranslation(wordChild, language: word.language, targetLanguage: targetLanguage)
+                    word.derivations.append(translation)
+                case "explanation":
+                    word.explanation = parseTranslation(wordChild, language: word.language, targetLanguage: targetLanguage)
+                case "grammar":
+                    word.grammar = parseLanguageUnit(wordChild, language: word.language)
+                case "related":
+                    if wordChild.element?.attributes["type"] == "antonym" {
+                        let translation = parseTranslation(wordChild, language: word.language, targetLanguage: targetLanguage)
+                        word.antonyms.append(translation)
+                    } else {
+                        print("NOT PARSED <related> type: \(wordChild.element?.attributes["type"])")
+                    }
+                default:
+                    print("NOT PARSED : \(wordChild)")
+                }
             }
             
             return word
         }
         
-        func parseTranslation(childTranslation: XMLIndexer, original: String) -> Translation {
+        func parseLanguageUnit(childTranslation: XMLIndexer, language: String) -> LanguageUnit {
             let value = childTranslation.element?.attributes["value"]
+            let languageUnit = LanguageUnit()
+            languageUnit.language = language;
+            
+            if let value = value {
+                languageUnit.value = value;
+            }
+            
+            return languageUnit;
+        }
+        
+        func parseTranslation(childTranslation: XMLIndexer, language: String, targetLanguage: String) -> Translation {
             let translation = Translation()
-            translation.original = original;
-            translation.translation = value!;
+            
+            if let value = childTranslation.element?.attributes["value"] {
+                translation.original = LanguageUnit();
+                translation.original?.value = value;
+                translation.original?.language = language;
+            }
+            
+            if childTranslation["translation"].element != nil {
+                translation.translation = parseLanguageUnit(childTranslation["translation"], language: targetLanguage);
+            }
+            
             
             return translation;
         }
         
         let xml = SWXMLHash.parse(xmlStr)
         
-        let words = parseDictionary(xml["dictionary"])
-        
-        print(words);
+        parseDictionary(xml["dictionary"])
     }
 }

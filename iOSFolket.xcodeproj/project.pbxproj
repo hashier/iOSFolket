@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C2D5B6E1C1ACBE600154349 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D5B6D1C1ACBE600154349 /* Translation.swift */; };
+		1C0A13B91C1ED69000A536BB /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0A13B81C1ED69000A536BB /* Translation.swift */; };
+		1C2D5B6E1C1ACBE600154349 /* LanguageUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D5B6D1C1ACBE600154349 /* LanguageUnit.swift */; };
 		1CC4E31C1C19C67C00950BC5 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC4E31B1C19C67C00950BC5 /* Word.swift */; };
 		CE0C412A1C1B5AD7006818B8 /* small.xml in Resources */ = {isa = PBXBuildFile; fileRef = CE0C41291C1B5AD7006818B8 /* small.xml */; };
 		CE1BDC3B1C172AB7008773B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1BDC3A1C172AB7008773B9 /* AppDelegate.swift */; };
@@ -22,7 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C2D5B6D1C1ACBE600154349 /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		1C0A13B81C1ED69000A536BB /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
+		1C2D5B6D1C1ACBE600154349 /* LanguageUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageUnit.swift; sourceTree = "<group>"; };
 		1CC4E31B1C19C67C00950BC5 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		CE0C41291C1B5AD7006818B8 /* small.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = small.xml; sourceTree = "<group>"; };
 		CE1BDC371C172AB7008773B9 /* iOSFolket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSFolket.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,7 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				1CC4E31B1C19C67C00950BC5 /* Word.swift */,
-				1C2D5B6D1C1ACBE600154349 /* Translation.swift */,
+				1C2D5B6D1C1ACBE600154349 /* LanguageUnit.swift */,
+				1C0A13B81C1ED69000A536BB /* Translation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,7 +221,8 @@
 				CE769EB61C1C1A4B00E22A04 /* FolketXMLParser.swift in Sources */,
 				CE1BDC3B1C172AB7008773B9 /* AppDelegate.swift in Sources */,
 				1CC4E31C1C19C67C00950BC5 /* Word.swift in Sources */,
-				1C2D5B6E1C1ACBE600154349 /* Translation.swift in Sources */,
+				1C2D5B6E1C1ACBE600154349 /* LanguageUnit.swift in Sources */,
+				1C0A13B91C1ED69000A536BB /* Translation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
