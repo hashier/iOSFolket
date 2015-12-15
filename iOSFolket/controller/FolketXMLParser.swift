@@ -9,6 +9,15 @@
 import Foundation
 import SWXMLHash
 
+enum FolketXMLParserError: ErrorType {
+    case ParsingError
+}
+
+enum FolketXMLParserResultType {
+    case Success(dictionary: Dictionary)
+    case Error(error: FolketXMLParserError)
+}
+
 class FolketXMLParser {
     var filePath: String
     
@@ -16,7 +25,20 @@ class FolketXMLParser {
         filePath = withFilePath
     }
     
-    // TODO: Make this insynchronous
+    func parse(completion: (result: FolketXMLParserResultType) -> Void) -> Void {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+            let dictionary = self.parse()
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if let dictionary = dictionary {
+                    completion(result: .Success(dictionary: dictionary))
+                } else {
+                    completion(result: .Error(error: .ParsingError))
+                }
+            })
+        }
+    }
+    
     func parse() -> Dictionary? {
         
         var xmlStr = try! String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding)
