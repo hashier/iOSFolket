@@ -103,9 +103,9 @@ class FolketXMLParser {
             for wordChild in childWord.children {
                 switch wordChild.element!.name {
                 case "phonetic":
-                    word.phonetic = parseLanguageUnit(childWord, language: word.language)
+                    word.phonetic = parseLanguageUnit(wordChild, language: word.language)
                 case "definition":
-                    word.definition = parseTranslation(childWord, language: word.language, targetLanguage: targetLanguage)
+                    word.definition = parseTranslation(wordChild, language: word.language, targetLanguage: targetLanguage)
                 case "translation":
                     if let languageUnit = parseLanguageUnit(wordChild, language: targetLanguage) {
                         word.translations.append(languageUnit)
@@ -115,7 +115,7 @@ class FolketXMLParser {
                         word.synonyms.append(languageUnit)
                     }
                 case "paradigm":
-                    for paradigms in childWord.all {
+                    for paradigms in wordChild.all {
                         if let languageUnit = parseLanguageUnit(paradigms, language: word.language) {
                             word.inflections.append(languageUnit)
                         }
