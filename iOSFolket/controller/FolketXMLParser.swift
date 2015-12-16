@@ -27,7 +27,7 @@ class FolketXMLParser {
     
     func parse(completion: (result: FolketXMLParserResultType) -> Void) -> Void {
         
-        var xmlStr = try! String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding)
+        let xmlPath = NSURL(fileURLWithPath: filePath)
         
         func parseDictionary(dictionaryElement: XMLElement) -> WordDictionary? {
             
@@ -179,12 +179,11 @@ class FolketXMLParser {
             
             var wordBatchCount = 0
             
-            let xmlData = xmlStr.dataUsingEncoding(NSUTF8StringEncoding)!
             let parser = XMLParser()
             
             var currentDictionary:WordDictionary? = nil
             
-            parser.parse(xmlData, didStartElement: { (xmlElement) -> Void in
+            parser.parse(xmlPath, didStartElement: { (xmlElement) -> Void in
                 if xmlElement.name == "dictionary" {
                     
                     currentDictionary = parseDictionary(xmlElement)
@@ -253,7 +252,7 @@ class XMLParser: NSObject, NSXMLParserDelegate {
         super.init()
     }
     
-    func parse(data: NSData, didStartElement:(xmlElement: XMLElement) -> Void, didEndElement:(xmlElement: XMLElement) -> Void) -> XMLElement {
+    func parse(contentsOfURL: NSURL, didStartElement:(xmlElement: XMLElement) -> Void, didEndElement:(xmlElement: XMLElement) -> Void) -> XMLElement {
         // clear any prior runs of parse... expected that this won't be necessary, but you never know
         parentStack.removeAll()
         
@@ -262,10 +261,11 @@ class XMLParser: NSObject, NSXMLParserDelegate {
         
         parentStack.append(root)
         
-        let parser = NSXMLParser(data: data)
-        parser.shouldProcessNamespaces = false
-        parser.delegate = self
-        parser.parse()
+        if let parser = NSXMLParser(contentsOfURL: contentsOfURL) {
+            parser.shouldProcessNamespaces = false
+            parser.delegate = self
+            parser.parse()
+        }
         
         return root
     }
