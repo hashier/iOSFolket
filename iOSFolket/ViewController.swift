@@ -45,20 +45,15 @@ class ViewController: UIViewController {
         })
     }
     
-    func saveDicitonary(dictionary: Dictionary) -> Void {
+    func saveDicitonary(dictionary: WordDictionary) -> Void {
+        
         // Get the default Realm
         let realm = try! Realm()
         
-        try! realm.write {
-            // First we delete everything, be sure that is what we want to to
-            realm.deleteAll()
-            // Then we save the new dictionary
-            realm.add(dictionary)
-        }
-        
         // Let's try to load Words to see if everything working
-        let words = realm.objects(Word)
-        print(words)
+        let 📚 = realm.objects(Word)
+        
+        print(📚)
     }
 }
 

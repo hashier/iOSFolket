@@ -21,6 +21,7 @@ class Word: LanguageUnit {
     var translations = List<LanguageUnit>()
     var inflections = List<LanguageUnit>()
     var synonyms = List<LanguageUnit>()
+    var variants = List<LanguageUnit>()
     
     var antonyms = List<Translation>()
     var examples = List<Translation>()
@@ -28,9 +29,5 @@ class Word: LanguageUnit {
     var derivations = List<Translation>()
     var idioms = List<Translation>()
     
-    var dictionaries: [Dictionary] {
-        // Realm doesn't persist this property because it only has a getter defined
-        // Define "dictionaries" as the inverse relationship to Dictionary.words
-        return linkingObjects(Dictionary.self, forProperty: "words")
-    }
+    dynamic var dictionary: WordDictionary?
 }

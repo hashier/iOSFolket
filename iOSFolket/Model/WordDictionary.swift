@@ -6,10 +6,10 @@
 //  Copyright © 2015 iOSFolket. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import RealmSwift
 
-class Dictionary: Object {
+class WordDictionary: Object {
     dynamic var sourceLanguage = ""
     dynamic var targetLanguage = ""
     
@@ -23,5 +23,9 @@ class Dictionary: Object {
     dynamic var licenseComment: String?
     dynamic var originURL: String?
     
-    var words = List<Word>()
+    var words: [Word] {
+        // Realm doesn't persist this property because it only has a getter defined
+        // Define "dictionaries" as the inverse relationship to Dictionary.words
+        return linkingObjects(Word.self, forProperty: "dictionary")
+    }
 }
