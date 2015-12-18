@@ -32,6 +32,7 @@ class ViewController: UITableViewController {
     
     func loadDictionary() {
         let realm = try! Realm()
+        realm.refresh()
         self.📚 = realm.objects(WordDictionary).first
         self.tableView.reloadData()
         self.title = (self.📚?.name ?? "")
