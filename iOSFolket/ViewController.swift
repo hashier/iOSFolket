@@ -9,13 +9,16 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
+    var 📚:WordDictionary?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         loadDictionary()
+        loadDictionaryFromParser()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +31,13 @@ class ViewController: UIViewController {
     }
     
     func loadDictionary() {
-        
+        let realm = try! Realm()
+        self.📚 = realm.objects(WordDictionary).first
+        self.tableView.reloadData()
+        self.title = (self.📚?.name ?? "")
+    }
+    
+    func loadDictionaryFromParser() {
         guard let file = NSBundle.mainBundle().pathForResource("small", ofType: "xml") else {
             return;
         }
@@ -37,23 +46,28 @@ class ViewController: UIViewController {
         
         fxmlp.parse({ (result) -> Void in
             switch result {
-            case .Success(let dictionary):
-                self.saveDicitonary(dictionary)
+            case .Success(_):
+                self.loadDictionary()
             case .Error(let error):
                 print(error)
             }
         })
     }
     
-    func saveDicitonary(dictionary: WordDictionary) -> Void {
+    // MARK: UITableViewDelegate
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 📚?.words.count ?? 0
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("wordCell", forIndexPath: indexPath)
         
-        // Get the default Realm
-        let realm = try! Realm()
+        let word = 📚?.words[indexPath.row]
         
-        // Let's try to load Words to see if everything working
-        let 📚 = realm.objects(Word)
+        cell.textLabel?.text = word?.value
         
-        print(📚)
+        return cell
     }
 }
 
