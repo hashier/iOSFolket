@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,11 +19,11 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gDA-AP-Ml5" id="mwx-ga-HtH">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FcW-DQ-Gcz">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -30,6 +31,12 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Ker-3b-4lN" kind="show" id="Biu-HN-Gdt">
+                                        <segue key="commit" inheritsFrom="parent" id="H5X-1E-K2E"/>
+                                        <segue key="preview" inheritsFrom="commit" id="jhb-Y0-9ZG"/>
+                                    </segue>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -38,10 +45,65 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="vMz-zj-S3k"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="GHE-1F-EeJ" id="AHo-rb-EpQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6r-JM-RXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="GHE-1F-EeJ">
+                    <connections>
+                        <outlet property="delegate" destination="I0a-9R-1bS" id="1xv-LU-FRb"/>
+                        <outlet property="searchContentsController" destination="I0a-9R-1bS" id="7vU-Zw-ghf"/>
+                        <outlet property="searchResultsDataSource" destination="I0a-9R-1bS" id="60A-UJ-vUw"/>
+                        <outlet property="searchResultsDelegate" destination="I0a-9R-1bS" id="hh3-Kq-NII"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1284" y="461"/>
+        </scene>
+        <!--Word Detail View Controller-->
+        <scene sceneID="eHi-em-iLe">
+            <objects>
+                <viewController id="Ker-3b-4lN" customClass="WordDetailViewController" customModule="iOSFolket" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iUW-sa-Gse"/>
+                        <viewControllerLayoutGuide type="bottom" id="oRs-F0-sin"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Kd-3l-sXA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="goM-Ny-TIi">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ker-3b-4lN" id="Qgr-fI-Q8r"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oRs-F0-sin" firstAttribute="top" secondItem="goM-Ny-TIi" secondAttribute="bottom" id="9z3-Kr-nbo"/>
+                            <constraint firstItem="goM-Ny-TIi" firstAttribute="top" secondItem="iUW-sa-Gse" secondAttribute="bottom" id="NbV-sI-IRk"/>
+                            <constraint firstItem="goM-Ny-TIi" firstAttribute="leading" secondItem="1Kd-3l-sXA" secondAttribute="leading" id="Uqm-1A-7eV"/>
+                            <constraint firstItem="oRs-F0-sin" firstAttribute="top" secondItem="goM-Ny-TIi" secondAttribute="bottom" id="YVi-YC-BeA"/>
+                            <constraint firstItem="goM-Ny-TIi" firstAttribute="top" secondItem="iUW-sa-Gse" secondAttribute="bottom" id="cYO-ib-9DS"/>
+                            <constraint firstAttribute="trailing" secondItem="goM-Ny-TIi" secondAttribute="trailing" id="lt4-9l-d4K"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cYO-ib-9DS"/>
+                                <exclude reference="YVi-YC-BeA"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="goM-Ny-TIi" id="MbE-2f-J9c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Drc-tU-6L7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2033" y="461"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6Be-I3-KEg">
@@ -62,4 +124,7 @@
             <point key="canvasLocation" x="472" y="461"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Biu-HN-Gdt"/>
+    </inferredMetricsTieBreakers>
 </document>

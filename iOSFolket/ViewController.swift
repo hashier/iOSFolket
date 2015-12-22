@@ -9,16 +9,29 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, UISearchResultsUpdating {
+
+    let searchController = UISearchController(searchResultsController: nil)
 
     var 📚:WordDictionary?
+    let realm = try! Realm()
+    
+    var filteredWords:Results<Word>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         loadDictionary()
-        loadDictionaryFromParser()
+        
+        if 📚 == nil {
+            loadDictionaryFromParser()
+        }
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,11 +44,10 @@ class ViewController: UITableViewController {
     }
     
     func loadDictionary() {
-        let realm = try! Realm()
         realm.refresh()
         self.📚 = realm.objects(WordDictionary).first
-        self.tableView.reloadData()
         self.title = (self.📚?.name ?? "")
+        self.filterContentForSearchText(searchController.searchBar.text!)
     }
     
     func loadDictionaryFromParser() {
@@ -55,20 +67,47 @@ class ViewController: UITableViewController {
         })
     }
     
+    func filterContentForSearchText(searchText: String) {
+        let normalizedSearchString = searchText.normalizedString
+        
+        let predicate = NSPredicate(format: "normalizedValue BEGINSWITH %@ OR ANY translations.normalizedValue BEGINSWITH %@ OR ANY inflections.normalizedValue BEGINSWITH %@ OR ANY variants.normalizedValue BEGINSWITH %@", normalizedSearchString, normalizedSearchString, normalizedSearchString, normalizedSearchString)
+        filteredWords = realm.objects(Word).filter(predicate)
+        
+        tableView.reloadData()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let destination = segue.destinationViewController as? WordDetailViewController {
+            if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPathForCell(cell) {
+                if let word = filteredWords?[indexPath.row] {
+                    destination.word = word
+                }
+            }
+        }
+    }
+    
+    // MARK: UISearchResultsUpdating
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
     // MARK: UITableViewDelegate
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 📚?.words.count ?? 0
+        return filteredWords?.count ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("wordCell", forIndexPath: indexPath)
         
-        let word = 📚?.words[indexPath.row]
+        let word = filteredWords?[indexPath.row]
         
         cell.textLabel?.text = word?.value
         
         return cell
     }
+    
 }
 

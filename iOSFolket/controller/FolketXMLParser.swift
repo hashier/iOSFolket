@@ -66,10 +66,7 @@ class FolketXMLParser {
             }
             
             let wordClass = wordElement.attributes["class"]
-            let word = Word()
-            
-            word.value = value
-            word.language = language
+            let word = Word(language: language, value: value)
             
             word.wordClass = wordClass
             
@@ -139,9 +136,7 @@ class FolketXMLParser {
                 return nil
             }
             
-            let languageUnit = LanguageUnit()
-            languageUnit.language = language;
-            languageUnit.value = value;
+            let languageUnit = LanguageUnit(language: language, value: value)
             
             return languageUnit;
         }
@@ -153,9 +148,7 @@ class FolketXMLParser {
             
             let translation = Translation()
             
-            let original = LanguageUnit();
-            original.value = value;
-            original.language = language;
+            let original = LanguageUnit(language: language, value: value);
             
             translation.original = original
             

@@ -10,6 +10,8 @@
 		1C0A13B91C1ED69000A536BB /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0A13B81C1ED69000A536BB /* Translation.swift */; };
 		1C2D5B6E1C1ACBE600154349 /* LanguageUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2D5B6D1C1ACBE600154349 /* LanguageUnit.swift */; };
 		1C7BB4681C1F1447006B521D /* WordDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BB4671C1F1447006B521D /* WordDictionary.swift */; };
+		1C8969221C298AA300F0A68A /* String+iosfolket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8969211C298AA300F0A68A /* String+iosfolket.swift */; };
+		1C8969251C29A21A00F0A68A /* WordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8969241C29A21A00F0A68A /* WordDetailViewController.swift */; };
 		1CC4E31C1C19C67C00950BC5 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC4E31B1C19C67C00950BC5 /* Word.swift */; };
 		CE0C412A1C1B5AD7006818B8 /* small.xml in Resources */ = {isa = PBXBuildFile; fileRef = CE0C41291C1B5AD7006818B8 /* small.xml */; };
 		CE1BDC3B1C172AB7008773B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1BDC3A1C172AB7008773B9 /* AppDelegate.swift */; };
@@ -26,6 +28,8 @@
 		1C0A13B81C1ED69000A536BB /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		1C2D5B6D1C1ACBE600154349 /* LanguageUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageUnit.swift; sourceTree = "<group>"; };
 		1C7BB4671C1F1447006B521D /* WordDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDictionary.swift; sourceTree = "<group>"; };
+		1C8969211C298AA300F0A68A /* String+iosfolket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+iosfolket.swift"; sourceTree = "<group>"; };
+		1C8969241C29A21A00F0A68A /* WordDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDetailViewController.swift; sourceTree = "<group>"; };
 		1CC4E31B1C19C67C00950BC5 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		CE0C41291C1B5AD7006818B8 /* small.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = small.xml; sourceTree = "<group>"; };
 		CE1BDC371C172AB7008773B9 /* iOSFolket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSFolket.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +58,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C8969201C298A2D00F0A68A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1C8969211C298AA300F0A68A /* String+iosfolket.swift */,
+			);
+			name = Extension;
+			path = extension;
+			sourceTree = "<group>";
+		};
+		1C8969231C29A1F800F0A68A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1C8969241C29A21A00F0A68A /* WordDetailViewController.swift */,
+			);
+			name = ViewController;
+			path = viewcontroller;
+			sourceTree = "<group>";
+		};
 		1CC4E31D1C19C68200950BC5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +116,8 @@
 		CE1BDC391C172AB7008773B9 /* iOSFolket */ = {
 			isa = PBXGroup;
 			children = (
+				1C8969231C29A1F800F0A68A /* ViewController */,
+				1C8969201C298A2D00F0A68A /* Extension */,
 				CE769EB41C1C181200E22A04 /* Controller */,
 				CE0C41281C1B5AC9006818B8 /* Data */,
 				1CC4E31D1C19C68200950BC5 /* Model */,
@@ -220,7 +244,9 @@
 				CE1BDC3D1C172AB7008773B9 /* ViewController.swift in Sources */,
 				CE769EB61C1C1A4B00E22A04 /* FolketXMLParser.swift in Sources */,
 				CE1BDC3B1C172AB7008773B9 /* AppDelegate.swift in Sources */,
+				1C8969221C298AA300F0A68A /* String+iosfolket.swift in Sources */,
 				1CC4E31C1C19C67C00950BC5 /* Word.swift in Sources */,
+				1C8969251C29A21A00F0A68A /* WordDetailViewController.swift in Sources */,
 				1C7BB4681C1F1447006B521D /* WordDictionary.swift in Sources */,
 				1C2D5B6E1C1ACBE600154349 /* LanguageUnit.swift in Sources */,
 				1C0A13B91C1ED69000A536BB /* Translation.swift in Sources */,

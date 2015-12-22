@@ -12,4 +12,13 @@ import RealmSwift
 class LanguageUnit: Object {
     dynamic var language = ""
     dynamic var value = ""
+    dynamic var normalizedValue = ""
+    
+    convenience init(language:String, value:String) {
+        self.init()
+        
+        self.language = language
+        self.value = value
+        normalizedValue = value.normalizedString
+    }
 }
