@@ -202,7 +202,7 @@ class FolketXMLParser {
                                     realm.add(word);
                                 }
                                 
-                                wordBatchCount++
+                                wordBatchCount += 1
                                 
                                 if wordBatchCount >= 1000 {
                                     wordBatchCount = 0
@@ -308,7 +308,7 @@ public class XMLElement: CustomStringConvertible {
     func addElement(name: String, withAttributes attributes: Dictionary<String, String>) -> XMLElement {
         
         let element = XMLElement(name: name, index: count)
-        count++
+        count += 1
         
         // Preventing putting the whole xml in memory
         if preventAddingChildren == false {
